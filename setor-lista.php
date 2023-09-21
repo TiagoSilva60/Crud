@@ -1,5 +1,5 @@
 <?php
-// inclusao de arquivos base
+
 include_once './_conexao.php';
 include_once './_header.php';
 ?>
@@ -16,26 +16,25 @@ include_once './_header.php';
         <th>Cor</th>
         <th colspan="2">Ações</th>
     </tr>
-
-
 <?php
+
 $sql = "SELECT * FROM setor;";
 $resultado = mysqli_query($conexao,$sql);
 
-while ( $row = mysqli_fetch_array($resultado)  ) {
-?>   
-   
+while ($row = mysqli_fetch_array($resultado) ) {
+?>
     <tr>
         <td><?php echo $row['SetorID'];?></td>
         <td><?php echo $row['Nome'];?></td>
         <td><?php echo $row['Andar'];?></td>
         <td><?php echo $row['Cor'];?></td>
-        <td><a href="./setor-salvar.php">atualizar</a></td>
-        <td><a href="./setor-excluir.php">excluir</a></td>
+        <td><a href="./setor-salvar.php?id=<?php echo $row['SetorID'];?>">atualizar</a></td>
+        <td><a href="./setor-excluir.php?id=<?php echo $row['SetorID'];?>">excluir</a></td>
     </tr>
 <?php
 
 }
+
 ?>
 </table>
 <?php
